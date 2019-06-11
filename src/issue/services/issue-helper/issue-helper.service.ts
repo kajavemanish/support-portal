@@ -9,19 +9,19 @@ export class IssuehelperService {
     constructor(
         private IssueService: IssueService,
     ) { }
-    async getIssueByName(name : string): Promise<Issue>{
-        const Issue=await this.IssueService.getIssueByName(name);
+    async findIssueByName(name : string): Promise<Issue>{
+        const Issue=await this.IssueService.findIssueByName(name);
     }
-    async getIssues(Issues: string): Promise<Issue> {
-        const Issue = await this.IssueService.getIssues(Issues); 
+    async findIssues(Issues: string): Promise<Issue> {
+        const Issue = await this.IssueService.findIssues(Issues); 
         return Issue;
     }
-    async getIssueStatuses(IssueStatuses: string): Promise<Issue> {
-        const Issue = await this.IssueService.getIssueStatuses(IssueStatuses); 
+    async findIssueStatuses(IssueStatuses: string): Promise<Issue> {
+        const Issue = await this.IssueService.findIssueStatuses(IssueStatuses); 
         return Issue;
     }
-    async getIssueByComments(IssueByComments: string): Promise<Issue> {
-        const Issue = await this.IssueService.getIssueByComments(IssueByComments); 
+    async findIssueByComments(IssueByComments: string): Promise<Issue> {
+        const Issue = await this.IssueService.findIssueByComments(IssueByComments); 
         return Issue;
     }
     async createIssueByName(createIssueDto: CreateIssueDto): Promise<Issue> {

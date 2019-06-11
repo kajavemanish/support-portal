@@ -9,19 +9,19 @@ import { IssuehelperService } from '../services/issue-helper/issue-helper.servic
 export class IssueController {
     constructor(private readonly IssuehelperService: IssuehelperService){}
 
-    @Get()
+    /*@Get()
     index(): Promise<Issue[]> {
       return this.IssuehelperService.findAll();
-    } 
+    } */
     @Get('issue:/name')  
     async getIssueByName(@Res() res,@Param('name')name){
-      const Issue=await this.IssuehelperService.getIssueByName(name);
+      const Issue=await this.IssuehelperService.findIssueByName(name);
       if (!Issue) throw new NotFoundException('issue does not exist!');
       /*return res.status(HttpStatus.OK).json(Issue);*/
     }
     @Get('issues')  
     async getIssues(@Res() res,@Param('issues')issues){
-      const issue=await this.IssuehelperService.getIssues(issues);
+      const Issue=await this.IssuehelperService.findIssues(issues);
       console.log(req.query.filters.status);/*https://stackoverflow.com/posts/52282953/edit*/
       console.log(req.query.search)
      /* try {
@@ -71,14 +71,14 @@ const db = require('mysql'),
 
     @Get('issueStatuses')  
     async getIssueStatuses(@Res() res,@Param('issueStatuses')issueStatuses){
-      const Issue=await this.IssuehelperService.getIssueStatuses(issueStatuses);
+      const Issue=await this.IssuehelperService.findIssueStatuses(issueStatuses);
       if (!issueStatuses) throw new NotFoundException('issueStatuses does not exist!');
      /* return res.status(HttpStatus.OK).json(Issue);*/
     }
 
     @Get('commentsByIssue:/name')  
     async getIssueByComments(@Res() res,@Param('commentsIssue')commentsIssue){
-      const Issue=await this.IssuehelperService.getIssueByComments(commentsIssue);
+      const Issue=await this.IssuehelperService.findIssueByComments(commentsIssue);
       if (!Issue) throw new NotFoundException('issuecomments does not exist!');
     
     }
